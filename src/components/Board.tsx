@@ -1,9 +1,4 @@
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-  DropResult,
-} from "react-beautiful-dnd";
+import { Draggable, Droppable, DropResult } from "react-beautiful-dnd";
 
 interface Todo {
   id: string;
@@ -13,13 +8,12 @@ interface Todo {
 
 interface Props {
   todos: Todo[];
-  onDragEndHandler: (result: DropResult) => void;
   type: string;
 }
 
-function Board({ todos, onDragEndHandler, type }: Props): JSX.Element {
+function Board({ todos, type }: Props): JSX.Element {
   return (
-    <div className="mx-6 px-3 text-center">
+    <div className="mx-6 px-3 text-center w-48">
       <h1 className="text-xl font-bold mb-3">{type}</h1>
 
       <Droppable droppableId={type}>

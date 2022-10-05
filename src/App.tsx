@@ -51,7 +51,7 @@ function App() {
       sourceList,
       result.source.index,
     );
-    copiedTodos[result.source.droppableId];
+    copiedTodos[result.source.droppableId] = newSourceList as Item[];
 
     const destinationList = copiedTodos[result.destination.droppableId];
     copiedTodos[result.destination.droppableId] = addToList(
@@ -59,10 +59,6 @@ function App() {
       result.destination.index,
       removedElement as Item,
     );
-
-    // const newArray = Array.from(todos);
-    // const [reorderedItem] = newArray.splice(result.source.index, 1);
-    // newArray.splice(result.destination.index, 0, reorderedItem);
 
     updateTodos(copiedTodos);
   }
@@ -82,11 +78,10 @@ function App() {
   }
 
   return (
-    <div className="flex justify-center min-h-screen mt-24 font-sans">
+    <div className="flex justify-center mt-24 font-sans">
       <DragDropContext onDragEnd={onDragEndHandler}>
         {list.map((el) => (
           <Board
-            onDragEndHandler={onDragEndHandler}
             todos={todos[el]}
             type={el}
             key={el}
